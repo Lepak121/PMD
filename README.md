@@ -13,3 +13,8 @@
   - **AppBar:** «Пошук авто»
   - **Body:** `Center` → `ElevatedButton("Переглянути")`
   - **BottomNavigationBar:** два пункти відповідно до теми («Авто» / іконка авто)
+
+- [lab3](./lab3) — **Лабораторна робота №3** (Група 3: Cards-first layout)
+  - **Тема:** «Пошук авто»
+  - **Макет:** кнопки — зверху (`Row`), заголовок — під кнопками (`Text`), опис — у центральній частині (`Expanded` + `Spacer`), зображення — внизу екрана (`Container`).
+  - **Використані layout-віджети:** `Column`, `Row`, `Container`, `Padding`, `Expanded`, `Spacer`.
