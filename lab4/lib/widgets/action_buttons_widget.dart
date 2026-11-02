@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-/// Власний віджет: Блок кнопок дії (розміщуються вгорі екрана в рядок)
+/// Власний віджет: Блок кнопок дії
 class ActionButtonsWidget extends StatelessWidget {
   final String firstButtonText;
   final String secondButtonText;
+  final int counter;
   final VoidCallback onFirstPressed;
   final VoidCallback onSecondPressed;
 
@@ -11,6 +12,7 @@ class ActionButtonsWidget extends StatelessWidget {
     super.key,
     required this.firstButtonText,
     required this.secondButtonText,
+    required this.counter,
     required this.onFirstPressed,
     required this.onSecondPressed,
   });
@@ -21,29 +23,30 @@ class ActionButtonsWidget extends StatelessWidget {
 
     return Row(
       children: [
-        // Перша кнопка дії (адаптивно розширюється за допомогою Expanded)
+        // 1. Кнопка дії, що збільшує лічильник int та відображає поточне значення
         Expanded(
-          child: OutlinedButton(
+          child: OutlinedButton.icon(
             onPressed: onFirstPressed,
+            icon: const Icon(Icons.touch_app, size: 18),
             style: OutlinedButton.styleFrom(
               shape: const StadiumBorder(),
               side: BorderSide(
-                color: theme.colorScheme.primary.withValues(alpha: 0.35),
+                color: theme.colorScheme.primary.withValues(alpha: 0.5),
               ),
               padding: const EdgeInsets.symmetric(vertical: 12),
             ),
-            child: Text(
-              firstButtonText,
+            label: Text(
+              '$firstButtonText ($counter)',
               style: TextStyle(
                 color: theme.colorScheme.primary,
-                fontWeight: FontWeight.w500,
-                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
               ),
             ),
           ),
         ),
-        const SizedBox(width: 14),
-        // Друга кнопка дії
+        const SizedBox(width: 12),
+        // 2. Друга кнопка дії
         Expanded(
           child: OutlinedButton(
             onPressed: onSecondPressed,
@@ -59,7 +62,7 @@ class ActionButtonsWidget extends StatelessWidget {
               style: TextStyle(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.w500,
-                fontSize: 15,
+                fontSize: 14,
               ),
             ),
           ),
@@ -68,4 +71,3 @@ class ActionButtonsWidget extends StatelessWidget {
     );
   }
 }
-

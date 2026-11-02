@@ -4,11 +4,28 @@ import '../widgets/header_widget.dart';
 import '../widgets/image_block_widget.dart';
 import '../widgets/info_card_widget.dart';
 
-/// Головний екран Лабораторної роботи №4
-/// Побудований на основі виділених власних віджетів (StatelessWidget)
-/// та layout-віджетів: Column, Row, Container, Padding, Expanded, Spacer.
-class Lab4Screen extends StatelessWidget {
+/// Головний екран: реалізовано як StatefulWidget
+/// з окремим класом стану _Lab4ScreenState.
+class Lab4Screen extends StatefulWidget {
   const Lab4Screen({super.key});
+
+  @override
+  State<Lab4Screen> createState() => _Lab4ScreenState();
+}
+
+/// Клас стану: всі змінні стану зберігаються всередині класу State.
+/// Оновлення інтерфейсу виконується виключно через setState().
+class _Lab4ScreenState extends State<Lab4Screen> {
+  // Обов'язкові змінні стану:
+  // 1. bool — стан іконки "обране" та стан Switch
+  bool _isFavorite = false;
+  bool _showExtraDetails = false;
+
+  // 2. int — лічильник натискання кнопки дії
+  int _actionCounter = 0;
+
+  // 3. String — значення, зчитане з TextField через onChanged
+  String _userNote = '';
 
   @override
   Widget build(BuildContext context) {
@@ -28,53 +45,67 @@ class Lab4Screen extends StatelessWidget {
         surfaceTintColor: Colors.transparent,
       ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Блок кнопок дії — зверху (Row + Expanded)
+              // 1. Блок кнопок дії — зверху (збільшує int лічильник через setState та відображає його)
               ActionButtonsWidget(
-                firstButtonText: 'Дія 1',
-                secondButtonText: 'Дія 2',
+                firstButtonText: 'Переглянути',
+                secondButtonText: 'Поділитися',
+                counter: _actionCounter,
                 onFirstPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Натиснуто: Дія 1'),
-                      duration: Duration(seconds: 1),
-                    ),
-                  );
+                  setState(() {
+                    _actionCounter++;
+                  });
                 },
                 onSecondPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Натиснуто: Дія 2'),
+                      content: Text('Посилання скопійовано!'),
                       duration: Duration(seconds: 1),
                     ),
                   );
                 },
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 18),
 
-              // 2. Заголовок або верхній інформаційний блок — під кнопками
-              const HeaderWidget(
+              // 2. Заголовок — під кнопками (іконка "обране" через bool та бейдж через Switch)
+              HeaderWidget(
                 category: 'Пошук авто',
                 title: 'Назва об\'єкта / запису',
+                isFavorite: _isFavorite,
+                showBadge: _showExtraDetails,
+                onFavoriteToggle: () {
+                  setState(() {
+                    _isFavorite = !_isFavorite;
+                  });
+                },
               ),
 
               const SizedBox(height: 12),
 
-              // 3. Інформаційна картка / текстовий блок — у центральній частині
-              const Expanded(
-                child: InfoCardWidget(
-                  mainDescription:
-                      'Детальний текст або примітки. Тут може бути більше інформації, '
-                      'але без прокрутки. Expanded дозволяє цьому блоку зайняти вільний '
-                      'простір між заголовком та зображенням.',
-                  studentNote:
-                      'Студент має слідкувати, щоб текст не виходив за межі екрана.',
-                ),
+              // 3. Інформаційна картка — у центральній частині (Switch та TextField з onChanged)
+              InfoCardWidget(
+                mainDescription:
+                    'Детальний текст або примітки. Тут може бути більше інформації. '
+                    'Всі елементи стану інтерактивні та оновлюються через setState().',
+                studentNote:
+                    'Студент має слідкувати, щоб текст не виходив за межі екрана.',
+                showExtraDetails: _showExtraDetails,
+                onToggleExtraDetails: (bool value) {
+                  setState(() {
+                    _showExtraDetails = value;
+                  });
+                },
+                userNote: _userNote,
+                onNoteChanged: (String value) {
+                  setState(() {
+                    _userNote = value;
+                  });
+                },
               ),
 
               const SizedBox(height: 16),
@@ -84,7 +115,7 @@ class Lab4Screen extends StatelessWidget {
                 imageUrl:
                     'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
                 altText: 'Пошук авто',
-                height: 190,
+                height: 170,
               ),
             ],
           ),
@@ -93,4 +124,3 @@ class Lab4Screen extends StatelessWidget {
     );
   }
 }
-
