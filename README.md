@@ -23,7 +23,16 @@
   - **Тема:** «Пошук авто» (Група 3)
   - **Структура папок:** `screens/` (екран `lab4_screen.dart`) та `widgets/` (власні компоненти `StatelessWidget`).
   - **Виділені компоненти:**
-    - `ActionButtonsWidget` — блок кнопок дії зверху (`firstButtonText`, `secondButtonText`, callbacks);
-    - `HeaderWidget` — заголовок та категорія запису (`title`, `category`);
-    - `InfoCardWidget` — інформаційний блок опису та приміток (`mainDescription`, `studentNote`);
-    - `ImageBlockWidget` — блок із зображенням та заглушкою (`imageUrl`, `altText`, `height`).
+    - `ActionButtonsWidget` — блок кнопок дії зверху;
+    - `HeaderWidget` — заголовок та категорія запису;
+    - `InfoCardWidget` — інформаційний блок опису;
+    - `ImageBlockWidget` — блок із зображенням та заглушкою.
+
+- [lab5](./lab5) — **Лабораторна робота №5** (StatefulWidget та управління станом)
+  - **Тема:** «Пошук авто»
+  - **Клас екрана:** `Lab5Screen` (`StatefulWidget`) та клас стану `_Lab5ScreenState`.
+  - **Змінні стану (всі оновлення через `setState()`):**
+    - `bool _isFavorite` — стан іконки «обране» (зміна кольору при натисканні);
+    - `bool _showExtraDetails` — стан `Switch` (показ/приховування блоку деталей, зміна стилю та бейдж «В наявності»);
+    - `int _actionCounter` — лічильник натискань кнопки дії (відображення значення);
+    - `String _userNote` — текст із `TextField` через `onChanged` та відображення збереженої замітки.
