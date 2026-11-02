@@ -40,3 +40,4 @@ class InfoCardWidget extends StatelessWidget {
     );
   }
 }
+
