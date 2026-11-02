@@ -18,3 +18,12 @@
   - **Тема:** «Пошук авто»
   - **Макет:** кнопки — зверху (`Row`), заголовок — під кнопками (`Text`), опис — у центральній частині (`Expanded` + `Spacer`), зображення — внизу екрана (`Container`).
   - **Використані layout-віджети:** `Column`, `Row`, `Container`, `Padding`, `Expanded`, `Spacer`.
+
+- [lab4](./lab4) — **Лабораторна робота №4** (Власні віджети та декомпозиція інтерфейсу)
+  - **Тема:** «Пошук авто» (Група 3)
+  - **Структура папок:** `screens/` (екран `lab4_screen.dart`) та `widgets/` (власні компоненти `StatelessWidget`).
+  - **Виділені компоненти:**
+    - `ActionButtonsWidget` — блок кнопок дії зверху (`firstButtonText`, `secondButtonText`, callbacks);
+    - `HeaderWidget` — заголовок та категорія запису (`title`, `category`);
+    - `InfoCardWidget` — інформаційний блок опису та приміток (`mainDescription`, `studentNote`);
+    - `ImageBlockWidget` — блок із зображенням та заглушкою (`imageUrl`, `altText`, `height`).
