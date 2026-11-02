@@ -4,28 +4,11 @@ import '../widgets/header_widget.dart';
 import '../widgets/image_block_widget.dart';
 import '../widgets/info_card_widget.dart';
 
-/// Головний екран: реалізовано як StatefulWidget
-/// з окремим класом стану _Lab4ScreenState.
-class Lab4Screen extends StatefulWidget {
+/// Лабораторна робота №4
+/// Головний екран побудований на основі виділених власних віджетів (StatelessWidget)
+/// та layout-віджетів: Column, Row, Container, Padding, Expanded, Spacer.
+class Lab4Screen extends StatelessWidget {
   const Lab4Screen({super.key});
-
-  @override
-  State<Lab4Screen> createState() => _Lab4ScreenState();
-}
-
-/// Клас стану: всі змінні стану зберігаються всередині класу State.
-/// Оновлення інтерфейсу виконується виключно через setState().
-class _Lab4ScreenState extends State<Lab4Screen> {
-  // Обов'язкові змінні стану:
-  // 1. bool — стан іконки "обране" та стан Switch
-  bool _isFavorite = false;
-  bool _showExtraDetails = false;
-
-  // 2. int — лічильник натискання кнопки дії
-  int _actionCounter = 0;
-
-  // 3. String — значення, зчитане з TextField через onChanged
-  String _userNote = '';
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +16,10 @@ class _Lab4ScreenState extends State<Lab4Screen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          'Деталі',
+          'Пошук авто - Деталі',
           style: TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
         centerTitle: true,
@@ -45,67 +28,53 @@ class _Lab4ScreenState extends State<Lab4Screen> {
         surfaceTintColor: Colors.transparent,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Блок кнопок дії — зверху (збільшує int лічильник через setState та відображає його)
+              // 1. Блок кнопок дії — зверху (Row + Expanded)
               ActionButtonsWidget(
-                firstButtonText: 'Переглянути',
-                secondButtonText: 'Поділитися',
-                counter: _actionCounter,
+                firstButtonText: 'Характеристики',
+                secondButtonText: 'Контакти',
                 onFirstPressed: () {
-                  setState(() {
-                    _actionCounter++;
-                  });
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Обрано: Характеристики авто'),
+                      duration: Duration(seconds: 1),
+                    ),
+                  );
                 },
                 onSecondPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Посилання скопійовано!'),
+                      content: Text('Обрано: Зв\'язок з продавцем'),
                       duration: Duration(seconds: 1),
                     ),
                   );
                 },
               ),
 
-              const SizedBox(height: 18),
+              const SizedBox(height: 24),
 
-              // 2. Заголовок — під кнопками (іконка "обране" через bool та бейдж через Switch)
-              HeaderWidget(
+              // 2. Заголовок або верхній інформаційний блок — під кнопками
+              const HeaderWidget(
                 category: 'Пошук авто',
-                title: 'Назва об\'єкта / запису',
-                isFavorite: _isFavorite,
-                showBadge: _showExtraDetails,
-                onFavoriteToggle: () {
-                  setState(() {
-                    _isFavorite = !_isFavorite;
-                  });
-                },
+                title: 'Пошук авто: Audi A6 Sedan',
               ),
 
               const SizedBox(height: 12),
 
-              // 3. Інформаційна картка — у центральній частині (Switch та TextField з onChanged)
-              InfoCardWidget(
-                mainDescription:
-                    'Детальний текст або примітки. Тут може бути більше інформації. '
-                    'Всі елементи стану інтерактивні та оновлюються через setState().',
-                studentNote:
-                    'Студент має слідкувати, щоб текст не виходив за межі екрана.',
-                showExtraDetails: _showExtraDetails,
-                onToggleExtraDetails: (bool value) {
-                  setState(() {
-                    _showExtraDetails = value;
-                  });
-                },
-                userNote: _userNote,
-                onNoteChanged: (String value) {
-                  setState(() {
-                    _userNote = value;
-                  });
-                },
+              // 3. Інформаційна картка / текстовий блок — у центральній частині
+              const Expanded(
+                child: InfoCardWidget(
+                  mainDescription:
+                      'Автомобіль у відмінному стані, офіційне обслуговування. '
+                      'Повний привід Quattro, адаптивний круїз-контроль, матричні фари. '
+                      'Шкіряний салон, аудіосистема Bang & Olufsen.',
+                  studentNote:
+                      'Використано окремий віджет InfoCardWidget (StatelessWidget) та Expanded.',
+                ),
               ),
 
               const SizedBox(height: 16),
@@ -114,8 +83,8 @@ class _Lab4ScreenState extends State<Lab4Screen> {
               const ImageBlockWidget(
                 imageUrl:
                     'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
-                altText: 'Пошук авто',
-                height: 170,
+                altText: 'Пошук авто: Audi A6',
+                height: 190,
               ),
             ],
           ),

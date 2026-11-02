@@ -75,7 +75,7 @@ class _Lab5ScreenState extends State<Lab5Screen> {
               // 2. Заголовок з іконкою "обране" (bool) та бейджем статусу (Switch)
               HeaderWidget(
                 category: 'Пошук авто',
-                title: 'Назва об\'єкта / запису',
+                title: 'Пошук авто: Audi A6 Sedan',
                 isFavorite: _isFavorite,
                 showBadge: _showExtraDetails,
                 onFavoriteToggle: () {

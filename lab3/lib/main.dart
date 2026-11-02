@@ -25,15 +25,15 @@ class MyApp extends StatelessWidget {
 
 /// Лабораторна робота №3
 /// Група 3: Інформаційні блоки (Cards-first layout)
+/// Тема: «Пошук авто»
+///
 /// Макет:
 ///  ● кнопки — зверху (Row);
 ///  ● заголовок — під кнопками (Text);
 ///  ● опис — у центральній частині (Expanded);
 ///  ● зображення — внизу екрана (Container).
 ///
-/// Основна структура: Пошук авто
-/// Макет побудовано без використання списків та навігації,
-/// використовуючи лише layout-віджети: Column, Row, Container, Padding, Expanded, Spacer.
+/// Використано лише layout-віджети: Column, Row, Container, Padding, Expanded, Spacer.
 class CarDetailsScreen extends StatelessWidget {
   const CarDetailsScreen({super.key});
 
@@ -43,10 +43,10 @@ class CarDetailsScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          'Деталі',
+          'Пошук авто - Деталі',
           style: TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
         centerTitle: true,
@@ -68,7 +68,7 @@ class CarDetailsScreen extends StatelessWidget {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Натиснуто: Дія 1'),
+                            content: Text('Обрано: Характеристики авто'),
                             duration: Duration(seconds: 1),
                           ),
                         );
@@ -81,7 +81,7 @@ class CarDetailsScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       child: Text(
-                        'Дія 1',
+                        'Характеристики',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.w500,
@@ -95,7 +95,7 @@ class CarDetailsScreen extends StatelessWidget {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Натиснуто: Дія 2'),
+                            content: Text('Обрано: Зв\'язок з продавцем'),
                             duration: Duration(seconds: 1),
                           ),
                         );
@@ -108,7 +108,7 @@ class CarDetailsScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       child: Text(
-                        'Дія 2',
+                        'Контакти',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.w500,
@@ -121,9 +121,9 @@ class CarDetailsScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // 2. Текстовий заголовок — під кнопками
+              // 2. Текстовий заголовок — під кнопками («Пошук авто»)
               const Text(
-                'Назва об\'єкта / запису',
+                'Пошук авто: Audi A6 Sedan',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -140,10 +140,11 @@ class CarDetailsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      'Детальний текст або примітки. Тут може бути більше інформації, '
-                      'але без прокрутки. Expanded дозволяє цьому блоку зайняти вільний '
-                      'простір між заголовком та зображенням.\n\n'
-                      'Студент має слідкувати, щоб текст не виходив за межі екрана.',
+                      'Автомобіль у відмінному стані, офіційне сервісне обслуговування. '
+                      'Повний привід Quattro, адаптивний круїз-контроль, матричні LED-фари. '
+                      'Шкіряний салон Valcona, преміальна аудіосистема Bang & Olufsen.\n\n'
+                      'Віджет Expanded дозволяє цьому блоку адаптивно зайняти вільний '
+                      'простір між заголовком та зображенням автомобіля без переповнення екрана.',
                       style: TextStyle(
                         fontSize: 15,
                         height: 1.45,
@@ -180,7 +181,7 @@ class CarDetailsScreen extends StatelessWidget {
                             Icon(Icons.directions_car, size: 64, color: Colors.blueGrey),
                             SizedBox(height: 8),
                             Text(
-                              'Пошук авто',
+                              'Пошук авто: Audi A6',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,

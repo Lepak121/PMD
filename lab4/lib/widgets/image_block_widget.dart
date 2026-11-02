@@ -42,14 +42,14 @@ class ImageBlockWidget extends StatelessWidget {
                 children: [
                   const Icon(
                     Icons.directions_car,
-                    size: 56,
+                    size: 64,
                     color: Colors.blueGrey,
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 8),
                   Text(
                     altText,
                     style: const TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: Colors.blueGrey,
                     ),

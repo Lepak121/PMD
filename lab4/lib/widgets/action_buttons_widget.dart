@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-/// Власний віджет: Блок кнопок дії
+/// Власний віджет: Блок кнопок дії зверху
 class ActionButtonsWidget extends StatelessWidget {
   final String firstButtonText;
   final String secondButtonText;
-  final int counter;
   final VoidCallback onFirstPressed;
   final VoidCallback onSecondPressed;
 
@@ -12,7 +11,6 @@ class ActionButtonsWidget extends StatelessWidget {
     super.key,
     required this.firstButtonText,
     required this.secondButtonText,
-    required this.counter,
     required this.onFirstPressed,
     required this.onSecondPressed,
   });
@@ -23,30 +21,27 @@ class ActionButtonsWidget extends StatelessWidget {
 
     return Row(
       children: [
-        // 1. Кнопка дії, що збільшує лічильник int та відображає поточне значення
         Expanded(
-          child: OutlinedButton.icon(
+          child: OutlinedButton(
             onPressed: onFirstPressed,
-            icon: const Icon(Icons.touch_app, size: 18),
             style: OutlinedButton.styleFrom(
               shape: const StadiumBorder(),
               side: BorderSide(
-                color: theme.colorScheme.primary.withValues(alpha: 0.5),
+                color: theme.colorScheme.primary.withValues(alpha: 0.35),
               ),
               padding: const EdgeInsets.symmetric(vertical: 12),
             ),
-            label: Text(
-              '$firstButtonText ($counter)',
+            child: Text(
+              firstButtonText,
               style: TextStyle(
                 color: theme.colorScheme.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
               ),
             ),
           ),
         ),
-        const SizedBox(width: 12),
-        // 2. Друга кнопка дії
+        const SizedBox(width: 14),
         Expanded(
           child: OutlinedButton(
             onPressed: onSecondPressed,
@@ -62,7 +57,7 @@ class ActionButtonsWidget extends StatelessWidget {
               style: TextStyle(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.w500,
-                fontSize: 14,
+                fontSize: 15,
               ),
             ),
           ),

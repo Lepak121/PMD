@@ -5,7 +5,6 @@ import 'package:lab3/main.dart';
 
 void main() {
   testWidgets('Лабораторна 3 - Перевірка розміщення layout-віджетів', (WidgetTester tester) async {
-    // Встановлюємо розмір тестового екрана
     tester.view.physicalSize = const Size(1080, 2400);
     tester.view.devicePixelRatio = 2.625;
     addTearDown(tester.view.resetPhysicalSize);
@@ -13,15 +12,15 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Перевірка AppBar
-    expect(find.widgetWithText(AppBar, 'Деталі'), findsOneWidget);
+    expect(find.widgetWithText(AppBar, 'Пошук авто - Деталі'), findsOneWidget);
 
     // Перевірка кнопок зверху (Row)
-    expect(find.widgetWithText(OutlinedButton, 'Дія 1'), findsOneWidget);
-    expect(find.widgetWithText(OutlinedButton, 'Дія 2'), findsOneWidget);
+    expect(find.widgetWithText(OutlinedButton, 'Характеристики'), findsOneWidget);
+    expect(find.widgetWithText(OutlinedButton, 'Контакти'), findsOneWidget);
     expect(find.byType(Row), findsWidgets);
 
-    // Перевірка заголовка
-    expect(find.text('Назва об\'єкта / запису'), findsOneWidget);
+    // Перевірка заголовка Пошук авто
+    expect(find.text('Пошук авто: Audi A6 Sedan'), findsOneWidget);
 
     // Перевірка наявності Expanded та Spacer
     expect(find.byType(Expanded), findsWidgets);
@@ -30,9 +29,9 @@ void main() {
     // Перевірка наявності Container для зображення
     expect(find.byType(Container), findsWidgets);
 
-    // Перевірка натискання кнопки Дія 1
-    await tester.tap(find.widgetWithText(OutlinedButton, 'Дія 1'));
+    // Перевірка натискання кнопки
+    await tester.tap(find.widgetWithText(OutlinedButton, 'Характеристики'));
     await tester.pump();
-    expect(find.text('Натиснуто: Дія 1'), findsOneWidget);
+    expect(find.text('Обрано: Характеристики авто'), findsOneWidget);
   });
 }
