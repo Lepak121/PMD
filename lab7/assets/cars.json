@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "title": "Audi A6 2.0 TFSI Quattro",
+    "isFavorite": true,
+    "status": "В наявності"
+  },
+  {
+    "id": 2,
+    "title": "BMW 520d xDrive Sedan",
+    "isFavorite": false,
+    "status": "В наявності"
+  },
+  {
+    "id": 3,
+    "title": "Mercedes-Benz E220d AMG",
+    "isFavorite": true,
+    "status": "Заброньовано"
+  },
+  {
+    "id": 4,
+    "title": "Volkswagen Passat B8 R-Line",
+    "isFavorite": false,
+    "status": "В наявності"
+  },
+  {
+    "id": 5,
+    "title": "Toyota Camry 2.5 Hybrid",
+    "isFavorite": false,
+    "status": "Продано"
+  }
+]
+
