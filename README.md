@@ -69,3 +69,18 @@
   - **Контролери:** `TextEditingController` для всіх полів.
   - **Кнопка «Зареєструватися»:** запуск повної валідації форми.
   - **Навігація:** `Navigator.push()` на `HomeScreen` **виключно після успішної валідації**, передача імені користувача та відображення тексту `«Вітаємо, $userName!»`.
+
+- [lab9](./lab9) — **Лабораторна робота №9** (Теми, власні шрифти, AppColors, AppStyles та ProfileScreen)
+  - **Теми (Light / Dark mode):** динамічне перемикання теми через `ThemeMode.light` та `ThemeMode.dark` із налаштованими `AppTheme.lightTheme` та `AppTheme.darkTheme`.
+  - **Перемикач теми:** інтерактивний `SwitchListTile` на екрані та швидка кнопка в `AppBar`.
+  - **Власний шрифт:** підключено шрифт `AppFont` (`AppFont-Regular.ttf`, `AppFont-Bold.ttf`) через `pubspec.yaml`, що використовується в усьому додатку.
+  - **Графічні ресурси:** аватар користувача (`assets/images/avatar.png`) та декоративний банер (`assets/images/header_bg.png`).
+  - **Іконки:** власна PNG-іконка бейджа (`assets/icons/custom_badge.png`) та стандартні Material Icons для навігації й налаштувань.
+  - **Власна палітра (`AppColors`):** `primary`, `secondary`, `accent`, кольори фону (`backgroundLight` / `backgroundDark`, `surfaceLight` / `surfaceDark`), тексту та рамок, які замінюють стандартні кольори Flutter.
+  - **Типографіка (`AppStyles`):** стилі заголовків (`titleLarge`, `titleMedium`, `titleSmall`), підзаголовків (`subtitle`), основного тексту (`bodyLarge`, `bodyMedium`), кнопок (`button`) та константи узгоджених відступів і радіусів.
+  - **Екран `ProfileScreen`:**
+    - Аватар, ім’я (`Юрій Лепак`), статус та бейдж ролі;
+    - Перемикач світлої/темної теми;
+    - Контактна інформація (email, телефон, місто);
+    - Розділ налаштувань, сповіщень та безпеки;
+    - Кнопка виходу з акаунта з модальним діалогом підтвердження.

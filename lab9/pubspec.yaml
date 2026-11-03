@@ -1,0 +1,33 @@
+name: lab9
+description: "Лабораторна робота 9 - Теми (Light/Dark mode), кастомні шрифти, AppColors, AppStyles та ProfileScreen."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/avatar.png
+    - assets/images/header_bg.png
+    - assets/icons/custom_badge.png
+
+  fonts:
+    - family: AppFont
+      fonts:
+        - asset: assets/fonts/AppFont-Regular.ttf
+        - asset: assets/fonts/AppFont-Bold.ttf
+          weight: 700
